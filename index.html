@@ -1,0 +1,266 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>OSMLoc: Single Image-Based Visual Localization in OpenStreetMap with Semantic and Geomet-
+    ric Guidances </title>
+  <link href="./OSMLoc/style.css" rel="stylesheet">
+  <script type="text/javascript" src="./OSMLoc/jquery.mlens-1.0.min.js"></script>
+  <script type="text/javascript" src="./OSMLoc/jquery.js"></script>
+  <style>
+    .divider {
+      border-right: 2px dashed #737373;
+      width: 2px;
+    }
+  </style>
+  <style>
+    .divider_horizontal {
+      border-top: 2px dashed #737373;
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <div class="content">
+    <h1><strong>OSMLoc: Single Image-Based Visual Localization in OpenStreetMap with Semantic and Geomet-
+      ric Guidances</strong>
+    </h1>
+    <p id="authors">
+      <span>
+        <a href="https://martin-liao.github.io/">Youqi Liao*<sup>1</sup></a>
+      </span>
+      <span>
+        <a href="https://xieyuanli-chen.com/">Xieyuanli Chen*<sup>2</sup></a>
+      </span>
+      <span>
+        <a href="https://kang-1-2-3.github.io/">shuhao Kang<sup>3</sup></a>
+      </span>
+      <span>
+        <a href="https://kafeiyin00.github.io">Jianping Li<sup>4,&dagger;</sup></a>
+      </span>
+      <br>
+      <span>
+        <a href="https://dongzhenwhu.github.io/index.html">Zhen Dong<sup>1</sup></a>
+      </span>
+      <span>
+        <a href="https://scholar.google.com/citations?user=VeH-I7AAAAAJ">Hongchao Fan<sup>5</sup></a>
+      </span>
+      <span>
+        <a href="https://3s.whu.edu.cn/info/1025/1415.htm">Bisheng Yang<sup>1</sup></a>
+      </span>
+      <br>
+      <span class="institution">
+        <a href="https://en.whu.edu.cn/"><sup>1</sup>Wuhan University </a> 
+        <a href="https://english.nudt.edu.cn/"><sup>2</sup> National University of Defense Technology</a>
+        <a href="https://www.tum.de/"><sup>3</sup>Technical University of Munich </a> 
+        <br>
+        <a href="https://www.kcl.ac.uk/"><sup>4</sup> Nanyang Technological University</a>
+        <a href="http://cki.com.cn/en/"><sup>5</sup> Norwegian University of Science and Technology</a>
+      </span> 
+
+        <sup>*</sup>The first two authors contribute equally. &nbsp;&nbsp;
+        <sup>&dagger;</sup>Corresponding author. &nbsp;&nbsp; 
+    </p>
+    <font size="+3">
+      <p style="text-align: center;">
+        <a target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+        <a target="_blank">[Video]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://github.com/WHU-USI3DV/OSMLoc" target="_blank">[Code]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a target="_blank">[BibTeX]</a>
+      </p>
+    </font>
+    
+    <h3>
+      <center>What can CoFiI2P do?</center>
+    </h3>
+    <img src="./OSMLoc/motivation.png" class="teaser-gif" style="width:100%"><br>
+    <a style="text-align:center">
+      OSMLoc is an  <strong> image-to-OpenstreetMap (I2O) visual localization framework with geometric and semantic guidance.</strong>  (a) shows the core idea of our
+      method that integrates the geometry and semantic guidance into the framework, while (b) shows the worldwide evaluation results.
+  </a>
+  </div>
+    <!--
+    <div id="contentWrapper">
+      <button id="prevButton" onclick="prevPage()">&#8249;</button>
+      <div id="gif-display"></div>
+      <button id="nextButton" onclick="nextPage()">&#8250;</button>
+    </div>
+    <div id="navBar">
+      <div class="navDot" id="dot0" onclick="goToPage(0)"></div>
+      <div class="navDot" id="dot1" onclick="goToPage(1)"></div>
+    </div>
+  </div>
+  <script>
+    // pre-list all the image files under gif_cropped folder
+    var allFiles = ["sun3d-hotel_uc-scan3-0-10.gif",
+    "scene0477_01-16-19.gif",
+    "scene0025_01-2-3.gif",
+    "scene0335_02-0-4.gif",
+    "sun3d-hotel_umd-maryland_hotel3-24-28.gif",
+    "scene0642_02-6-7.gif",
+    "scene0025_01-20-24.gif",
+    "scene0223_00-11-12.gif",
+    "scene0694_00-0-4.gif",
+    "sun3d-mit_76_studyroom-76-1studyroom2-47-48.gif",
+    "sun3d-mit_76_studyroom-76-1studyroom2-29-31.gif",
+    "sun3d-mit_76_studyroom-76-1studyroom2-25-33.gif",
+    "sun3d-mit_76_studyroom-76-1studyroom2-61-62.gif",
+    "scene0265_02-17-28.gif","scene0146_02-8-12.gif",
+    "scene0309_00-2-3.gif",
+    "scene0334_02-0-1.gif",
+    "sun3d-hotel_uc-scan3-15-23.gif",
+    "scene0457_01-5-9.gif",
+    "sun3d-home_md-home_md_scan9_2012_sep_30-46-47.gif"];
+
+    var page = 0; // current page
+
+    function goToPage(p) {
+      page = p;
+      showPage();
+    }
+    // Create a copy of the allFiles array
+    var shuffledFiles = allFiles.slice();
+
+    // Fisher-Yates Shuffle
+    for (let i = shuffledFiles.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+
+      // swap elements i and j
+      [shuffledFiles[i], shuffledFiles[j]] = [shuffledFiles[j], shuffledFiles[i]];
+    }
+    function showPage() {
+      var selectedFiles = shuffledFiles.slice(page * 10, (page + 1) * 10);
+
+      // construct a html string to show these images
+      var htmlStr = '<h3><center>Patch warping based on FreeReg correspondences</center></h3> \
+      <p>Based on the estimated FreeReg correspondences, we warp local RGB patches to their estimated corresponding positions in the point cloud. \
+      Click left/right arrow or navigate dots to view more results. </p><table>';
+      for (var i = 0; i < selectedFiles.length; i += 2) {
+        htmlStr += '<tr>';
+        for (var j = 0; j < 2; j++) {
+          if (i + j < selectedFiles.length) {
+            var file = selectedFiles[i + j];
+            htmlStr += '<td><img class="summary-img" src="./gif_cropped/' + file + '" style="width:100%;"></td>';
+            if (j == 0 && i + j + 1 < selectedFiles.length) {
+              // add a divider (dash line)
+              htmlStr += '<td class="divider"></td>';
+            }
+          }
+        }
+        htmlStr += '</tr>';
+      }
+      htmlStr += '</table>';
+      // add these images to a div with id 'content'
+      document.getElementById('gif-display').innerHTML = htmlStr;
+
+      // update navigation dots
+      for (var i = 0; i < 2; i++) {
+        var dot = document.getElementById('dot' + i);
+        if (i == page) {
+          dot.classList.add('navDotSelected');
+        } else {
+          dot.classList.remove('navDotSelected');
+        }
+      }
+    }
+
+    function prevPage() {
+      if (page > 0) {
+        page--;
+        // add these images to a div with id 'con
+        showPage();
+      }
+      else if (page == 0){
+      page= allFiles.length / 10 - 1;
+        showPage();
+      }
+    }
+
+    function nextPage() {
+      if (page < allFiles.length / 10 - 1) {
+        page++;
+        showPage();
+      }
+      else if (page == allFiles.length / 10 - 1) {
+      page=0;
+        showPage();
+      }
+    }
+
+    // Show the first page when the script is first run
+    showPage();
+  </script>
+  -->
+
+  <div class="content">
+    <h2 style="text-align:center;">Abstract</h2>
+    <p>OpenStreetMap (OSM), an online and versatile source of volunteered geographic information (VGI), is widely used for 
+      human self-localization by matching nearby visual observations with vectorized map data. However, due to the divergence in modalities and views, 
+      image-to-OSM (I2O) matching and localization remain challenging for robots, preventing the full utilization of VGI data in the unmanned ground vehicles 
+      and logistic industry. Inspired by the fact that the human brain relies on different regions when processing geometric and semantic information for spatial localization 
+      tasks, in this paper, we propose the OSMLoc. OSMLoc is a brain-inspired monocular visual localization method with semantic and geometric guidance to 
+      improve accuracy, robustness, and generalization ability. First, we equip the OSMLoc with the visual foundational model to extract powerful image features.
+      Second, a geometry-guided depth distribution adapter is proposed to bridge the monocular depth estimation and camera-to-BEV transform. 
+      Thirdly, the semantic embeddings from the OSM data are utilized as auxiliary guidance for image-to-OSM feature matching. 
+      To validate the proposed OSMLoc, we collect a worldwide cross-area and cross-condition (CC) benchmark for extensive evaluation. 
+      Experiments on the MGL dataset, CC validation benchmark, and KITTI dataset have demonstrated the superiority of our method. 
+  </div>
+
+  <div class="content">
+    <h2>Introduction Video</h2>
+    <p>We are working hard to make the introduction video.</p>
+    <video width="100%" controls autoplay control src="OSMLoc/video.mp4" ></video>
+  </div>
+
+
+  <div class="content">
+    <h2>Localization results</h2>
+    <h3>
+      <center>Comparable results</center>
+    </h3>
+    <img class="results" src="./OSMLoc/qualitative.png" style="width:100%;">
+    <br><br>
+
+    <h3>
+      <center>Qualitative results</center>
+    </h3>
+    <img class="results" src="./OSMLoc/features.png" style="width:100%;">
+    <br><br>
+
+    <h3>
+      <center>Application in Sequential loaclization</center>
+    </h3>
+    <img class="results" src="./OSMLoc/sequence.png" style="width:100%;">
+    <a>
+      <!--
+      <strong>(a)</strong> color image. 
+      <strong>(b)</strong> 
+      <strong>(c-e)</strong> Diffusion / Geometric / Fused Feature maps of the input RGB images and point clouds. 
+      <strong>(g)</strong> Estimated correspondences from FreeReg.
+      -->
+      </a>
+  </div>
+
+  <div class="content">
+    <h2>BibTex</h2>
+  <!--  <code> @article{kang2023cofii2p,<br>
+  &nbsp;&nbsp;title={CoFiI2P: Coarse-to-Fine Correspondences-Based Image-to-Point Cloud Registration},<br>
+  &nbsp;&nbsp;author={Shuhao Kang and Youqi Liao and  and Jianping Li and Fuxun Liang and Yuhao Li and Xianghong Zou and Fangning Li and 
+    Xieyuanli Chen and Zhen Dong and Bisheng Yang and Xieyuanli Chen},<br>
+  &nbsp;&nbsp;journal={arXiv preprint 2309.14660},<br>
+  &nbsp;&nbsp;year={2023}<br>
+  } </code> -->
+  <code>comming soon!</code>
+  </div>
+  <div class="content" id="acknowledgements">
+    <p><strong>Acknowledgements</strong>:
+      We borrow this template from <a href="https://whu-usi3dv.github.io/CoFiI2P/">CoFiI2P</a>.
+    </p>
+  </div>
+</body>
+
+</html>
