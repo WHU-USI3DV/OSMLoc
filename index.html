@@ -2,8 +2,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>OSMLoc: Single Image-Based Visual Localization in OpenStreetMap with Semantic and Geomet-
-    ric Guidances </title>
+  <title>OSMLoc: Single Image-Based Visual Localization in OpenStreetMap with Fused Geometric and Semantic Guidance </title>
   <link href="./OSMLoc/style.css" rel="stylesheet">
   <script type="text/javascript" src="./OSMLoc/jquery.mlens-1.0.min.js"></script>
   <script type="text/javascript" src="./OSMLoc/jquery.js"></script>
@@ -26,8 +25,8 @@
 
 <body>
   <div class="content">
-    <h1><strong>OSMLoc: Single Image-Based Visual Localization in OpenStreetMap with Semantic and Geomet-
-      ric Guidances</strong>
+    <h1><strong>OSMLoc: Single Image-Based Visual Localization in OpenStreetMap 
+      with Fused Geometric and Semantic Guidance</strong>
     </h1>
     <p id="authors">
       <span>
@@ -198,21 +197,28 @@
 
   <div class="content">
     <h2 style="text-align:center;">Abstract</h2>
-    <p>OpenStreetMap (OSM), an online and versatile source of volunteered geographic information (VGI), is widely used for 
-      human self-localization by matching nearby visual observations with vectorized map data. However, due to the divergence in modalities and views, 
-      image-to-OSM (I2O) matching and localization remain challenging for robots, preventing the full utilization of VGI data in the unmanned ground vehicles 
-      and logistic industry. Inspired by the fact that the human brain relies on different regions when processing geometric and semantic information for spatial localization 
-      tasks, in this paper, we propose the OSMLoc. OSMLoc is a brain-inspired monocular visual localization method with semantic and geometric guidance to 
-      improve accuracy, robustness, and generalization ability. First, we equip the OSMLoc with the visual foundational model to extract powerful image features.
-      Second, a geometry-guided depth distribution adapter is proposed to bridge the monocular depth estimation and camera-to-BEV transform. 
-      Thirdly, the semantic embeddings from the OSM data are utilized as auxiliary guidance for image-to-OSM feature matching. 
-      To validate the proposed OSMLoc, we collect a worldwide cross-area and cross-condition (CC) benchmark for extensive evaluation. 
-      Experiments on the MGL dataset, CC validation benchmark, and KITTI dataset have demonstrated the superiority of our method. 
+    <p> OpenStreetMap (OSM), a rich and versatile source of volunteered geographic
+       information (VGI), facilitates human self-localization and scene understanding
+        by integrating nearby visual observations with vectorized map data. However, 
+        the disparity in modalities and perspectives poses a major challenge for 
+        effectively matching camera imagery with compact map representations, thereby limiting the full potential
+        of VGI data in real-world localization applications. Inspired by the fact that the human brain relies
+        on the fusion of geometric and semantic understanding for spatial localization tasks, 
+        we propose the OSMLoc in this paper. OSMLoc is a brain-inspired visual localization approach 
+        based on first-person-view images against the OSM maps. It integrates semantic and geometric 
+        guidance to significantly improve accuracy, robustness, and generalization capability. 
+        First, we equip the OSMLoc with the visual foundational model to extract powerful image features. 
+        Second, a geometry-guided depth distribution adapter is proposed to bridge the monocular depth 
+        estimation and camera-to-BEV transform. Thirdly, the semantic embeddings from the OSM data are 
+        utilized as auxiliary guidance for image-to-OSM feature matching. To validate the proposed OSMLoc, 
+        we collect a worldwide cross-area and cross-condition (CC) benchmark for extensive evaluation. 
+        Experiments on the MGL dataset, CC validation benchmark, and KITTI dataset have demonstrated the 
+        superiority of our method. 
   </div>
 
   <div class="content">
     <h2>Introduction Video</h2>
-    <p>We are working hard to make the introduction video.</p>
+   <!-- <p>We are working hard to make the introduction video.</p> -->
     <video width="100%" controls autoplay control src="OSMLoc/demo.mp4" ></video>
   </div>
 
@@ -248,7 +254,8 @@
   <div class="content">
     <h2>BibTex</h2>
     <code> @article{liao2024osmloc,<br>
-  &nbsp;&nbsp;title={OSMLoc: Single Image-Based Visual Localization in OpenStreetMap with Geometric and Semantic Guidances},<br>
+  &nbsp;&nbsp;title={OSMLoc: Single Image-Based Visual Localization in OpenStreetMap
+    with Fused Geometric and Semantic Guidance},<br>
   &nbsp;&nbsp;author={Liao, Youqi and Chen, Xieyuanli and Kang, Shuhao and Li, Jianping and <br>
   &nbsp;&nbsp;Dong, Zhen and Fan, Hongchao and Yang, Bisheng},<br>
   &nbsp;&nbsp;journal={arXiv preprint arXiv:2411.08665},<br>
