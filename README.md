@@ -23,6 +23,87 @@ This is the official PyTorch implementation of the following publication:
 ## 🆕 News
 - 2024-11-20: [Project page](https://whu-usi3dv.github.io/OSMLoc/) (with introduction video) is available!🎉 
 - 2024-11-20: The code, pre-trained models, and validation benchmark will be available upon acceptance of the paper.
+- 2025-08-28: Code, pre-trained models, and validation benchmark are available now!
+
+## 💻 Installation
+An example for ```CUDA=11.8``` and ```pytorch=2.0.1```:
+```
+pip3 install -r requirements.txt
+```
+We will provide a Docker image for quick start in the near future.
+
+## 🚅 Usage
+
+### MGL dataset 
+You could download the MGL dataset [here](https://pan.baidu.com/s/1dsP_Wl_m9MpLHimp8qch0A?pwd=22gj)(passwd: 22gj)(>120G). As the MGL dataset is extremely large, please reserve enough space.
+
+### CC Benchmark
+You could download the CC benchmark [here](https://pan.baidu.com/s/1yUI8SY-RWsz30LKMFkgseA?pwd=26ms)(passwd: 26ms).
+
+### KITTI dataset
+
+Download and prepare the dataset to `./datasets/kitti/`:
+
+```
+python -m maploc.data.kitti.prepare
+```
+
+### Evaluation
+For the MGL dataset, CC benchmark and KITTI dataset, we provide pre-trained models on [googledrive](https://drive.google.com/drive/folders/142HxByjjPwY9Cbwyj6kEiut_sHxs9GSD?usp=sharing) and [Baidu Disk](https://pan.baidu.com/s/1CPOasGzZaCv95ppYyZgj_g?pwd=bu7b) (passwd:bu7b).
+Please download the weights of OSMLoc from webdrive and put them in a folder like ```checkpoints```.
+
+Example 1: evaluate ```OSMLOC``` on the MGL dataset
+
+```
+python -m maploc.evaluation.mapillary --checkpoint="./checkpoints/osmloc_small.ckpt" --dataset=mgl model.num_rotations=256 model.image_encoder.val=True
+```
+Above operation calculates the per-frame localization error, and the evaluation results on the MGL dataset should be close to:
+```
+PR@1m=14.04, PR@3m=44.00, PR@5m=57.31;
+OR@1m=21.84, OR@3m=53.38, OR@5m=68.41;
+```
+
+Example 2: evaluate ```OSMLOC``` on the munich part of CC benchmark
+
+```
+python -m maploc.evaluation.mapillary --checkpoint="./checkpoints/osmloc_small.ckpt" --dataset=munich model.num_rotations=256 model.image_encoder.val=True
+```
+Above operation calculates the per-frame localization error, and the evaluation results on the MGL dataset should be close to:
+```
+PR@1m=3.20, PR@3m=19.53, PR@5m=38.27;
+OR@1m=15.07, OR@3m=39.19, OR@5m=55.94;
+```
+
+Example 3: evaluate ```OSMLOC``` on the KITTI dataset
+
+```
+python -m maploc.evaluation.kitti kitti model.num_rotations=256  model.image_encoder.val=True
+```
+Above operation calculates the per-frame localization error, and the evaluation results on the MGL dataset should be close to:
+```
+LatR@1m=65.75, LatR@3m=93.79, Lat@5m=96.74;
+LonR@1m=24.50, LonR@3m=59.53, LonR@5m=72.67;
+OR@1m=37.43, OR@3m=79.69, OR@5m=91.67;
+```
+
+Example 4: evaluate ```OSMLOC``` on the MGL dataset with sequential frames
+
+```
+python -m maploc.evaluation.mapillary --checkpoint="./checkpoints/osmloc_small.ckpt" --dataset=mgl model.num_rotations=256  model.image_encoder.val=True --sequential --particle
+```
+The above operation employs the Monte Carlo Localization (MCL) framework with a simulated motion model to estimate per-frame localization, and the evaluation on the MGL dataset is expected to yield results close to:
+```
+PR@1m=14.04, PR@3m=44.00, PR@5m=57.31;
+OR@1m=21.84, OR@3m=53.38, OR@5m=68.41;
+```
+
+
+### Training
+Example: train ```OSMLoc``` on the MGL dataset
+```
+python -m maploc.train experiment.name=osmloc
+```
+
 
 ## 💡 Citation
 If you find this repo helpful, please give us a star~.Please consider citing OSMLoc if this program benefits your project.
