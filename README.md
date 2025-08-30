@@ -35,14 +35,40 @@ We will provide a Docker image for quick start in the near future.
 ## 🚅 Usage
 
 ### MGL dataset 
-You could download the MGL dataset [here](https://pan.baidu.com/s/1dsP_Wl_m9MpLHimp8qch0A?pwd=22gj)(passwd: 22gj)(>120G). As the MGL dataset is extremely large, please reserve enough space.
+Please download the MGL dataset [here](https://pan.baidu.com/s/1dsP_Wl_m9MpLHimp8qch0A?pwd=22gj)(passwd: 22gj)(>120G). As the MGL dataset is extremely large, please reserve enough space.
+After extraction, the file structure  should be as follows
+```
+datasets
+│
+├── MGL
+│   ├── avigon
+|          ├── images info
+|                 ├── 000001.json
+|                 ├── 000002.json
+|                 ├── ...
+|
+|          ├── images
+|                 ├── 000001_back.jpg
+|                 ├── 000001_front.jpg
+|                 ├── ...
+|
+|          ├── dump.json
+|
+|          ├── tiles.pkl
+|
+│   ├── amsterdam
+|
+|   ├── ...
+|   
+|    
+``` 
 
 ### CC Benchmark
-You could download the CC benchmark [here](https://pan.baidu.com/s/1yUI8SY-RWsz30LKMFkgseA?pwd=26ms)(passwd: 26ms).
+You could download the CC benchmark [here](https://pan.baidu.com/s/1yUI8SY-RWsz30LKMFkgseA?pwd=26ms)(passwd: 26ms). The file structure is the same as in MGL dataset.
 
 ### KITTI dataset
 
-Download and prepare the dataset to `./datasets/kitti/`:
+Download and prepare the dataset to `/datasets/kitti/`:
 
 ```
 python -m maploc.data.kitti.prepare
@@ -93,8 +119,8 @@ python -m maploc.evaluation.mapillary --checkpoint="./checkpoints/osmloc_small.c
 ```
 The above operation employs the Monte Carlo Localization (MCL) framework with a simulated motion model to estimate per-frame localization, and the evaluation on the MGL dataset is expected to yield results close to:
 ```
-PR@1m=14.04, PR@3m=44.00, PR@5m=57.31;
-OR@1m=21.84, OR@3m=53.38, OR@5m=68.41;
+PR@1m=23.86, PR@3m=61.58, PR@5m=75.72;
+OR@1m=27.47, OR@3m=61.48, OR@5m=75.40;
 ```
 
 
