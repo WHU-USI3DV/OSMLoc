@@ -6,8 +6,8 @@ This is the official PyTorch implementation of the following publication:
 
 > **OSMLoc: Single Image-Based Visual Localization in OpenStreetMap with Fused Geometric and Semantic Guidance**<br/>
 > [Youqi Liao*](https://martin-liao.github.io/),[Xieyuanli Chen*](https://xieyuanli-chen.com/),[Shuhao Kang](https://kang-1-2-3.github.io/) [Jianping Li**](https://kafeiyin00.github.io/),  [Zhen Dong](https://dongzhenwhu.github.io/index.html), [Hongchao Fan](https://scholar.google.com/citations?user=VeH-I7AAAAAJ), [Bisheng Yang](https://3s.whu.edu.cn/info/1025/1415.htm)<br/>
-> *Technical Report*<br/>
-> **Paper** | [**Arxiv**](https://arxiv.org/abs/2411.08665) | [**Project-page**](https://whu-usi3dv.github.io/OSMLoc/) | [**Video**](https://youtu.be/rjKRLYfCG-g)
+> *Information Fusion 2026*<br/>
+> [**Paper**](https://www.sciencedirect.com/science/article/pii/S1566253526004409) | [**Arxiv**](https://arxiv.org/abs/2411.08665) | [**Project-page**](https://whu-usi3dv.github.io/OSMLoc/) | [**Video**](https://youtu.be/rjKRLYfCG-g)
 
 
 ## 🔭 Introduction
@@ -134,11 +134,13 @@ python -m maploc.train experiment.name=osmloc
 ## 💡 Citation
 If you find this repo helpful, please give us a star~.Please consider citing OSMLoc if this program benefits your project.
 ```
-@article{liao2024osmloc,
-  title={OSMLoc: Single Image-Based Visual Localization in OpenStreetMap with Geometric and Semantic Guidances},
+@article{liao2026osmloc,
+  title={OSMLoc: Single image-based visual localization in OpenStreetMap with fused geometric and semantic guidance},
   author={Liao, Youqi and Chen, Xieyuanli and Kang, Shuhao and Li, Jianping and Dong, Zhen and Fan, Hongchao and Yang, Bisheng},
-  journal={arXiv preprint arXiv:2411.08665},
-  year={2024}
+  journal={Information Fusion},
+  pages={104562},
+  year={2026},
+  publisher={Elsevier}
 }
 ```
 
