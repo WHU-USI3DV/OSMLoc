@@ -1,6 +1,8 @@
-@article{liao2024osmloc,
-  title={OSMLoc: Single Image-Based Visual Localization in OpenStreetMap with Geometric and Semantic Guidances},
+@article{liao2026osmloc,
+  title={OSMLoc: Single image-based visual localization in OpenStreetMap with fused geometric and semantic guidance},
   author={Liao, Youqi and Chen, Xieyuanli and Kang, Shuhao and Li, Jianping and Dong, Zhen and Fan, Hongchao and Yang, Bisheng},
-  journal={arXiv preprint arXiv:2411.08665},
-  year={2024}
+  journal={Information Fusion},
+  pages={104562},
+  year={2026},
+  publisher={Elsevier}
 }
